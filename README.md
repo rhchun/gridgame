@@ -6,6 +6,7 @@ characters can walk around and if they land on a grid with a weapon or an armor,
 if a player moves to a grid with another player already on it, they fight. the winner gains exp and the loser dies.
 
 press s to start the game
+press i to print the status of the players and the board
 to create a player, press c and type the player's name
 to move a player, press m, type the player's name, type x coordinate (0 - 9) and type y coordinate (0 - 9)
 
