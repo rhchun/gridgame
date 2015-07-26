@@ -33,7 +33,7 @@ int main () {
 			break;
 		}
 		else {
-			cout << "Invalid command" << endl;
+			cout << "Invalid command." << endl;
 		}
 	}
 }
