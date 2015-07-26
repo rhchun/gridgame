@@ -59,7 +59,7 @@ Board::Board () {
 		numarmors++;
 		i++;
 	}
-	cout << "Game has started" << endl;
+	cout << "Game has started." << endl;
 }
 
 void Board::info_print() {
@@ -158,7 +158,7 @@ void Board::fight(int x, int y) {
 			players[p2]->base_armor+= 10;
 			players[p2]->hp += (players[p2]->level)*10;
 		}
-		cout << players[p2]->name << " is victorious" << endl;
+		cout << players[p2]->name << " is victorious." << endl;
 	}
 	else {
 		players[p2]->name = "";
@@ -171,14 +171,14 @@ void Board::fight(int x, int y) {
 			players[p1]->base_armor+= 10;
 			players[p1]->hp += (players[p1]->level)*10;
 		}
-		cout << players[p1]->name << " is victorious" << endl;
+		cout << players[p1]->name << " is victorious." << endl;
 	}
 }
 
 void Board::move (string player_name, int x, int y) {
 	for(int i = 0; i < numplayers; i++) {
 		if (player_name == players[i]->name) {
-			board[players[i]->location->x][(players[i]->location)->y] = 'N';
+			board[players[i]->location->x][players[i]->location->y] = 'N';
 			players[i]->move(x, y);
 			if (board[x][y] == 'W') {
 				for (int j = 0; j < numweapons; j++) {
@@ -186,11 +186,11 @@ void Board::move (string player_name, int x, int y) {
 						players[i]->weapon= weapons[j];
 						weapons[j]->location= new Posn(-1,-1);
 						cout << players[i]->name << " picked up " << weapons[j]->type << endl;
-						cout << players[i]->name << " has moved to " << players[i]->location->x << "," << players[i]->location->y << endl;
+						cout << players[i]->name << " has moved to " << players[i]->location->x << ", " << players[i]->location->y << "." << endl;
 						return;
 					}
 				} 
-				board[(players[i]->location)->x][(players[i]->location)->y] = 'P';
+				board[players[i]->location->x][players[i]->location->y] = 'P';
 			}
 			else if (board[x][y] == 'A') {
 				for (int j = 0; j < numarmors; j++) {
@@ -198,14 +198,15 @@ void Board::move (string player_name, int x, int y) {
 						players[i]->armor= armors[j];
 						armors[j]->location= new Posn(-1,-1);
 						cout << players[i]->name << " picked up " << armors[j]->type << endl;
-						cout << players[i]->name << " has moved to " << players[i]->location->x << "," << players[i]->location->y << endl;
+						cout << players[i]->name << " has moved to " << players[i]->location->x << ", " << players[i]->location->y << "." << endl;
 						return;
 					}
 				}
-				board[(players[i]->location)->x][(players[i]->location)->y] = 'P';
+				board[players[i]->location->x][players[i]->location->y] = 'P';
 			}
 			else if (board[x][y] == 'N') {
-				cout << players[i]->name << " has moved to " << players[i]->location->x << "," << players[i]->location->y << endl;
+				board[players[i]->location->x][players[i]->location->y] = 'P';
+				cout << players[i]->name << " has moved to " << players[i]->location->x << ", " << players[i]->location->y << "." << endl;
 				return;
 			}
 			else {
